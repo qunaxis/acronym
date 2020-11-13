@@ -121,6 +121,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	header = $('header');
 	headerOffset = processSection.offset().top;
 	console.log(processOffset);
+	$('.process-wrapper').height((windowHeight - headerOffset) * cardCount)
 	
 	function startProcess() {
 		for (let i = 1; i <= cardCount; i++) { // выведет 0, затем 1, затем 2
