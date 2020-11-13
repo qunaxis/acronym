@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			stagePadding: 0,
 			dots: false,
 			smartSpeed: 1500,
-			lazyLoad: true,
+			// lazyLoad: true,
 			// center: true,
 			autoWidth: true,
 			responsive: {
