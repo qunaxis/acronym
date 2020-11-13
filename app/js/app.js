@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	var controller = new ScrollMagic.Controller();
 
-	var tweenArray = [];
+	// var tweenArray = [];
 	cardCount = 5;
 	processSection = $('.process');
 	processOffset = processSection.offset().top;
