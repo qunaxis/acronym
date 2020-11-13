@@ -118,12 +118,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	cardCount = 5;
 	processSection = $('.process');
 	processOffset = processSection.offset().top;
+	header = $('header');
+	headerOffset = processSection.offset().top;
 	console.log(processOffset);
 	
 	function startProcess() {
 		for (let i = 1; i <= cardCount; i++) { // выведет 0, затем 1, затем 2
-			var showOffset = processOffset + (i-1)*windowHeight - windowHeight * 0.30;
-			var hideOffset =  processOffset + (i-1)*windowHeight + windowHeight * 0.05;
+			// var showOffset = processOffset + headerOffset + (i-1)*windowHeight - windowHeight * 0.30;
+			// var hideOffset =  processOffset + headerOffset + (i-1)*windowHeight + windowHeight * 0.05;
+			var showOffset = processOffset + headerOffset + (i-1)*windowHeight;
+			var hideOffset =  processOffset + headerOffset + (i-1)*windowHeight;
 			var movingDuration = hideOffset - showOffset + windowHeight * 1.5;
 
 			var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
