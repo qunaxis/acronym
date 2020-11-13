@@ -119,33 +119,36 @@ document.addEventListener("DOMContentLoaded", function() {
 	processSection = $('.process');
 	processOffset = processSection.offset().top;
 	console.log(processOffset);
-	for (let i = 1; i <= cardCount; i++) { // выведет 0, затем 1, затем 2
-		var showOffset = processOffset + (i-1)*windowHeight - windowHeight * 0.30;
-		var hideOffset =  processOffset + (i-1)*windowHeight + windowHeight * 0.05;
-		var movingDuration = hideOffset - showOffset + windowHeight * 1.5;
+	
+	function startProcess() {
+		for (let i = 1; i <= cardCount; i++) { // выведет 0, затем 1, затем 2
+			var showOffset = processOffset + (i-1)*windowHeight - windowHeight * 0.30;
+			var hideOffset =  processOffset + (i-1)*windowHeight + windowHeight * 0.05;
+			var movingDuration = hideOffset - showOffset + windowHeight * 1.5;
 
-		var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
-		var tweenMoving = TweenMax.to(`#c${i}`, 1, {bottom: "+=25"});
-		var tweenHide = TweenMax.to(`#c${i}`, 1, {opacity: "0", transform: "scale(.95)"});
+			var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
+			var tweenMoving = TweenMax.to(`#c${i}`, 1, {bottom: "+=25"});
+			var tweenHide = TweenMax.to(`#c${i}`, 1, {opacity: "0", transform: "scale(.95)"});
 
 
-		console.log(`c${i} showOffset: ${showOffset}`)
-		console.log(`c${i} hideOffset: ${hideOffset}`)
-		var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration * 0.125, offset: showOffset})
-					.setTween(tweenShow)
-					// .setPin('.card')
-					// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
-					.addTo(controller);
-		var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration, offset: showOffset})
-					.setTween(tweenMoving)
-					// .setPin('.card')
-					// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
-					.addTo(controller);
-		var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration * 0.125, offset: hideOffset})
-					.setTween(tweenHide)
-					// .setPin('.card')
-					// .addIndicators({name: `#c${i} hide`}) // add indicators (requires plugin)
-					.addTo(controller);
+			console.log(`c${i} showOffset: ${showOffset}`)
+			console.log(`c${i} hideOffset: ${hideOffset}`)
+			var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration * 0.125, offset: showOffset})
+						.setTween(tweenShow)
+						// .setPin('.card')
+						// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
+						.addTo(controller);
+			var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration, offset: showOffset})
+						.setTween(tweenMoving)
+						// .setPin('.card')
+						// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
+						.addTo(controller);
+			var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration * 0.125, offset: hideOffset})
+						.setTween(tweenHide)
+						// .setPin('.card')
+						// .addIndicators({name: `#c${i} hide`}) // add indicators (requires plugin)
+						.addTo(controller);
+		}
 	}
-
+	setTimeout(1000, startProcess);
 });
