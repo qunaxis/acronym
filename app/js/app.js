@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function() {
 		// adjust heights basing on window.innerHeight
 		// $(window).height() will not return correct value before resizing is done
 		windowHeight = $(window).height();
-
+		
 		getStickyScrollbar();
+		startOwl();
 		processParams = calcProcessParams();
 		startGsapProcess();
-
 	});
 	
 	function getStickyScrollbar() {
