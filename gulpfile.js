@@ -19,6 +19,7 @@ let paths = {
 			// 'node_modules/scrollmagic/scrollmagic/minified/plugins/animation.velocity.min.js', // npm vendor example (npm i --save-dev jquery)
 			// 'node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js', // npm vendor example (npm i --save-dev jquery)
 			baseDir + '/js/owl.carousel.js',
+			baseDir + '/js/debug.addIndicators.js',
 			baseDir + '/js/app.js' // app.js. Always at the end
 		],
 		dest: baseDir + '/js',

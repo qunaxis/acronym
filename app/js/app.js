@@ -5,7 +5,23 @@ document.addEventListener("DOMContentLoaded", function() {
 	// onClick .main-content__button
 	// code
 	
+	var sceneShow = {}
+	var sceneHide = {}
+	
+	var controller = new ScrollMagic.Controller();
+	
+	windowHeight = $(window).height();
+		
+	getStickyScrollbar();
+	startOwl();
+	processParams = calcProcessParams();
+	startGsapProcess(processParams);
+
 	$(window).on('resize touchmove', function () {
+		controller.destroy(reset);
+		sceneShow.destroy(reset);
+		sceneHide.destroy(reset);
+		var controller = new ScrollMagic.Controller();
 		// adjust heights basing on window.innerHeight
 		// $(window).height() will not return correct value before resizing is done
 		windowHeight = $(window).height();
@@ -13,7 +29,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		getStickyScrollbar();
 		startOwl();
 		processParams = calcProcessParams();
-		startGsapProcess();
+		startGsapProcess(processParams);
+
 	});
 	
 	function getStickyScrollbar() {
@@ -122,7 +139,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-	var controller = new ScrollMagic.Controller();
 
 	// var tweenArray = [];
 
@@ -131,43 +147,50 @@ document.addEventListener("DOMContentLoaded", function() {
 		processSection = $('.process');
 		processOffset = processSection.offset().top;
 		header = $('header');
-		headerOffset = processSection.offset().top;
+		headerOffset = header.height();
 		console.log(processOffset);
-		$('.process-wrapper').height((windowHeight - headerOffset) * cardCount)
+		var cardHeight = windowHeight - headerOffset;
+		console.log('windowHeight' + windowHeight);
+		console.log('headerOffset' + headerOffset);
+		console.log('cardHeight' + cardHeight);
+		$('.process-wrapper').height(cardHeight * cardCount);
+		$('.process-card').height(cardHeight);
 		return {
 			processOffset,
-			headerOffset
+			headerOffset,
+			cardHeight
 		}
 	}
 	
 	function startGsapProcess(params) {
-		var processOffset = params.processOffset
-		var headerOffset = params.headerOffset
+		var processOffset = params.processOffset;
+		var headerOffset = params.headerOffset;
+		var cardHeight = params.cardHeight;
 		for (let i = 1; i <= cardCount; i++) { // выведет 0, затем 1, затем 2
 			// var showOffset = processOffset + headerOffset + (i-1)*windowHeight - windowHeight * 0.30;
 			// var hideOffset =  processOffset + headerOffset + (i-1)*windowHeight + windowHeight * 0.05;
-			var showOffset = processOffset + headerOffset + (i-1)*windowHeight;
-			var hideOffset =  processOffset + headerOffset + (i-1)*windowHeight;
+			var showOffset = processOffset + headerOffset + (i-1)*cardHeight;
+			var hideOffset =  processOffset + headerOffset + (i-1)*cardHeight + cardHeight;
 			var movingDuration = hideOffset - showOffset + windowHeight * 1.5;
 
 			var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
-			var tweenMoving = TweenMax.to(`#c${i}`, 1, {bottom: "+=25"});
+			// var tweenMoving = TweenMax.to(`#c${i}`, 1, {bottom: "+=25"});
 			var tweenHide = TweenMax.to(`#c${i}`, 1, {opacity: "0", transform: "scale(.95)"});
 
 
 			console.log(`c${i} showOffset: ${showOffset}`)
 			console.log(`c${i} hideOffset: ${hideOffset}`)
-			var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration * 0.125, offset: showOffset})
+			sceneShow = new ScrollMagic.Scene({triggerElement: "#process-trigger", duration: movingDuration * 0.125, offset: showOffset})
 						.setTween(tweenShow)
 						// .setPin('.card')
 						// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
 						.addTo(controller);
-			var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration, offset: showOffset})
-						.setTween(tweenMoving)
-						// .setPin('.card')
-						// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
-						.addTo(controller);
-			var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration * 0.125, offset: hideOffset})
+			// var scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: movingDuration, offset: showOffset})
+			// 			.setTween(tweenMoving)
+			// 			// .setPin('.card')
+			// 			// .addIndicators({name: `#c${i} show`}) // add indicators (requires plugin)
+			// 			.addTo(controller);
+			sceneHide = new ScrollMagic.Scene({triggerElement: "#process-trigger", duration: movingDuration * 0.125, offset: hideOffset})
 						.setTween(tweenHide)
 						// .setPin('.card')
 						// .addIndicators({name: `#c${i} hide`}) // add indicators (requires plugin)
