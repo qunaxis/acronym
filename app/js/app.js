@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			// 			.addTo(controller);
 			sceneHide = new ScrollMagic.Scene({triggerElement: "#process-trigger", duration: movingDuration * 0.125, offset: hideOffset})
 						.setTween(tweenHide)
-						// .setPin('.card') 
+						// .setPin('.card')
 						// .addIndicators({name: `#c${i} hide`}) // add indicators (requires plugin)
 						.addTo(controller);
 		}
