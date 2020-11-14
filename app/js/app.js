@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			cardHeight
 		}
 	}
+
 	
 	function startGsapProcess(params) {
 		var processOffset = params.processOffset;
