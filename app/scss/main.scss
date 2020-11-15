@@ -761,6 +761,9 @@ h1 {
     html, body {
         font-size: 14px;
     }
+    .header {
+        box-shadow: 0px 12px 24px rgba(17, 17, 17, 0.16);
+    }
     .main {
         &-image {
             filter: blur(4px);
@@ -834,6 +837,9 @@ h1 {
     }
     .owl-team .owl-stage {
         // margin-left: 16px;
+    }
+    .shadow {
+        box-shadow: 0px 12px 24px rgba(17, 17, 17, 0.08);
     }
     .team {
         &-card {

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+window.onload = function() {
 
 	// Custom JS
 
@@ -231,4 +231,4 @@ document.addEventListener("DOMContentLoaded", function() {
 				.addIndicators();
 		}
 	}
-});
+};
