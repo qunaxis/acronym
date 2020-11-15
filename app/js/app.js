@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function() {
 			// var hideOffset =  processOffset + headerOffset + (i-1)*windowHeight + windowHeight * 0.05;
 			var showOffset = processOffset + headerOffset + (i-1)*cardHeight;
 			var hideOffset =  processOffset + (i-1)*cardHeight + cardHeight;
-			var movingDuration = cardHeight / 3;
+			var movingDuration = cardHeight / 2.75;
 
 			var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
 			// var tweenMoving = TweenMax.to(`#c${i}`, 1, {bottom: "+=25"});
