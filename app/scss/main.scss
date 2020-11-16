@@ -2,6 +2,20 @@
 
 // CUSTOM USER STYLES & IMPORTS
 
+.protip-skin-default--scheme-leaf.protip-container {
+    background: $primary;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-indent: 1px;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+}
+
+.protip-skin-default--scheme-leaf[data-pt-position=bottom-left] .protip-arrow, .protip-skin-default--scheme-leaf[data-pt-position=bottom-right] .protip-arrow, .protip-skin-default--scheme-leaf[data-pt-position=bottom] .protip-arrow {
+    border-bottom-color: $primary;
+}
+
 header {
     background-color: white;
     position: fixed;
@@ -200,7 +214,7 @@ button:hover {
         position: absolute;
         left: 0;
         top: 0;
-        z-index: -1;
+        z-index: -10;
         height: 100%;
     };
     &-content {
@@ -256,17 +270,20 @@ button:hover {
 }
 
 .assortment {
-    &-wrapper .container-fluid .row:last-child .col-12  {
-        margin-bottom: 2rem;
-        // margin-bottom: 32px;
-        a {
-            color: $black;
-            text-decoration: none;
-            outline: none;
-            &:hover {
+    &-wrapper {
+        position: relative;
+        & .container-fluid .row:last-child .col-12  {
+            margin-bottom: 2rem;
+            // margin-bottom: 32px;
+            a {
                 color: $black;
                 text-decoration: none;
                 outline: none;
+                &:hover {
+                    color: $black;
+                    text-decoration: none;
+                    outline: none;
+                }
             }
         }
     }
@@ -291,6 +308,29 @@ button:hover {
             font-size: 1.75rem;
             margin-bottom: 0;
         }
+    }
+    &-element {
+        position: absolute;
+        height: auto;
+        bottom: -20%;
+    }
+}
+
+#ae {
+    &-1 {
+        left: 4%;
+        width: 5%;
+        filter: blur(4px);
+    }
+    &-2 {
+        right: 3%;
+        width: 8%;
+        z-index: 1;
+        filter: blur(2px);
+    }
+    &-3 {
+        left: 50%;
+        width: 5%;
     }
 }
 
@@ -340,9 +380,6 @@ button:hover {
     }
     .owl-item {
         overflow: visible;
-        img {
-            // width: auto;
-        }
     }
 }
 // .owl-stage {
@@ -434,7 +471,42 @@ footer {
         font-weight: 700;
         margin-bottom: 2rem;
     }
+    .info {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 1.1rem 0;
+        &-icon {
+            width: auto;
+            height: auto;
+            margin-right: 1rem;
+        }
+        &-text {
+            margin: 0;
+            line-height: 1.3;
+            font-weight: 600;
+            text-indent: 1px;
+        }
+    }
+    // .row:first-child {
+    //     margin-bottom: 2rem;
+    .label {
+        margin-top: 3rem;
+    }
+    
+    .label-text, .copyright {
+        font-weight: 400;
+        font-size: .75rem;
+        margin-right: 1rem;
+    }
+    // }
 }
+
+
+// .label, .copyright {
+//     margin-top: 2rem;
+// }
 
 
 // INPUT STYLES
@@ -547,10 +619,9 @@ footer {
 
 .map {
     height: calc(100% + 6rem);
-    // width: 100%;
     margin-top: -3rem;
-    margin-bottom: -3rem;
-    margin-right: -12em;
+    margin-bottom: -6rem;
+    margin-right: -12rem;
 }
 
 
@@ -673,20 +744,9 @@ h1 {
             left: -90vw;
         }
         &-content {
-            h1 {
-                // color: white;
-            }
             &__logo {
                 width: 100%;
                 height: auto;
-            }
-            a {
-                // color: white;
-                // border-color: white;
-                &:hover {
-                    // border-color: $primary;
-                    // color: $primary;
-                }
             }
             &__nav {
                 width: 100%;
@@ -754,6 +814,16 @@ h1 {
         margin-left: -6rem;
         margin-top: 3rem;
     }
+    .protip-skin-default--scheme-leaf.protip-container {
+        display: none;
+    }
+    
+    .protip-skin-default--scheme-leaf[data-pt-position=bottom-left] .protip-arrow, .protip-skin-default--scheme-leaf[data-pt-position=bottom-right] .protip-arrow, .protip-skin-default--scheme-leaf[data-pt-position=bottom] .protip-arrow {
+        display: none;
+    }
+    .label {
+        display: none !important;
+    }        
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -835,9 +905,6 @@ h1 {
             height: 25rem;
         }
     }
-    .owl-team .owl-stage {
-        // margin-left: 16px;
-    }
     .shadow {
         box-shadow: 0px 12px 24px rgba(17, 17, 17, 0.08);
     }
@@ -868,4 +935,30 @@ h1 {
             }
         }
     }
+    .map {
+        margin-left: -3rem;
+        margin-right: -3rem;
+    }
+    
+    #ae {
+        &-1 {
+            display: none;
+        }
+        &-2 {
+            display: none;
+        }
+        &-3 {
+            display: none;
+        }
+    }
+    .protip-skin-default--scheme-leaf.protip-container {
+        display: none;
+    }
+    
+    .protip-skin-default--scheme-leaf[data-pt-position=bottom-left] .protip-arrow, .protip-skin-default--scheme-leaf[data-pt-position=bottom-right] .protip-arrow, .protip-skin-default--scheme-leaf[data-pt-position=bottom] .protip-arrow {
+        display: none;
+    }
+    .label {
+        display: none !important;
+    }    
 }

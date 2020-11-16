@@ -11,12 +11,27 @@ window.onload = function() {
 	var controller = new ScrollMagic.Controller();
 	
 	windowHeight = $(window).height();
-		
+	$.protip();
 	getStickyScrollbar();
 	startOwl();
 	processParams = calcProcessParams();
 	startGsapProcess(processParams);
+	parallaxElements();
 
+	var tooltip = $('#tooltip');
+
+	tooltip.protipShow({
+		position: 'bottom',
+		scheme: 'leaf',
+		trigger: 'sticky',
+	});
+
+	tooltip.mouseenter(function(){
+		setTimeout(function() {tooltip.protipHide()}, 2000);	
+	});
+
+
+	
 	$(window).on('resize touchmove', function () {
 		controller.destroy(reset);
 		sceneShow.destroy(reset);
@@ -118,7 +133,7 @@ window.onload = function() {
 	$(".input-effect input").val("");
 	var phoneMask = IMask(
 		document.getElementById('phone'), {
-			mask: '+{7}(000)000-00-00'
+			mask: '+{7} (000) 000-00-00'
 	});
 
 	area = $('.form-textarea')
@@ -171,8 +186,8 @@ window.onload = function() {
 		for (let i = 1; i <= cardCount; i++) { // выведет 0, затем 1, затем 2
 			// var showOffset = processOffset + headerOffset + (i-1)*windowHeight - windowHeight * 0.30;
 			// var hideOffset =  processOffset + headerOffset + (i-1)*windowHeight + windowHeight * 0.05;
-			var showOffset = processOffset + headerOffset + (i-1)*cardHeight;
-			var hideOffset =  processOffset + (i-1)*cardHeight + cardHeight;
+			var showOffset = processOffset + (i-1)*cardHeight;
+			var hideOffset =  processOffset + (i-1)*cardHeight + cardHeight - headerOffset;
 			var movingDuration = cardHeight / 2.75;
 
 			var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
@@ -201,34 +216,21 @@ window.onload = function() {
 		}
 	}
 
-	function startGsapProcess2(params) {
-		var cardHeight = params.cardHeight;
-
-		
-		
-		for (let i = 1; i <= cardCount; i++) {
-			var showOffset = processOffset + headerOffset + (i-1)*cardHeight;
-			var hideOffset =  processOffset + headerOffset + (i-1)*cardHeight + cardHeight;
-			var movingDuration = hideOffset - showOffset + windowHeight * 1.5;
-			var tweenShow = TweenMax.to(`#c${i}`, 1, {opacity: "1", transform: "scale(1)"});
-			// var tweenMoving = TweenMax.to(`#c${i}`, 1, {bottom: "+=25"});
-			var tweenHide = TweenMax.to(`#c${i}`, 1, {opacity: "0", transform: "scale(.95)"});
-	
-	
-			console.log(`c${i} showOffset: ${showOffset}`)
-			console.log(`c${i} hideOffset: ${hideOffset}`)
-			console.log(`c${i} cardHeight: ${cardHeight}`)
-			var scene1 = new ScrollMagic.Scene({
-					triggerElement: `#c${i}`,
-					duration: cardHeight
-				})
-				.setPin(`#pin${i}`, {
-					// pushFollowers: false
-				})
-				.setTween(tweenShow)
-				// .setTween(tweenHide)
-				.addTo(controller)
-				.addIndicators();
-		}
+	function parallaxElements() {
+		var tweenParallax1 = TweenMax.to(`#ae-1`, 1, {bottom: '70%'});
+		var tweenParallax2 = TweenMax.to(`#ae-2`, 1, {bottom: '60%'});
+		var tweenParallax3 = TweenMax.to(`#ae-3`, 1, {bottom: '45%'});
+		sceneParallax1 = new ScrollMagic.Scene({triggerElement: "#assortment", duration: windowHeight/1.1})
+						.setTween(tweenParallax1)
+						// .addIndicators({name: `parallax1`}) // add indicators (requires plugin)
+						.addTo(controller);
+		sceneParallax2 = new ScrollMagic.Scene({triggerElement: "#assortment", duration: windowHeight/1.24})
+						.setTween(tweenParallax2)
+						// .addIndicators({name: `parallax2`}) // add indicators (requires plugin)
+						.addTo(controller);
+		sceneParallax3 = new ScrollMagic.Scene({triggerElement: "#assortment", duration: windowHeight/1.75})
+						.setTween(tweenParallax3)
+						// .addIndicators({name: `parallax3`}) // add indicators (requires plugin)
+						.addTo(controller);
 	}
 };
