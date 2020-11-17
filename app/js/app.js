@@ -169,7 +169,6 @@ window.onload = function() {
 		console.log('windowHeight' + windowHeight);
 		console.log('headerOffset' + headerOffset);
 		console.log('cardHeight' + cardHeight);
-		var paddingProcessWrapper = 
 		// $('.process-wrapper').height(cardHeight * cardCount);
 		$('.process-card').height(cardHeight);
 		return {
