@@ -465,9 +465,9 @@ button:hover {
 footer {
     background: $gradient;
     color: white;
-    padding: 3rem;
+    padding: 3em;
     h3 {
-        font-size: 32px;
+        font-size: 1.75em;
         font-weight: 700;
         margin-bottom: 2rem;
     }
@@ -476,11 +476,11 @@ footer {
         flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        margin: 1.1rem 0;
+        margin: 1.1em 0;
         &-icon {
             width: auto;
             height: auto;
-            margin-right: 1rem;
+            margin-right: 1em;
         }
         &-text {
             margin: 0;
@@ -492,13 +492,13 @@ footer {
     // .row:first-child {
     //     margin-bottom: 2rem;
     .label {
-        margin-top: 3rem;
+        margin-top: 3em;
     }
     
     .label-text, .copyright {
         font-weight: 400;
-        font-size: .75rem;
-        margin-right: 1rem;
+        font-size: .75em;
+        margin-right: 1em;
     }
     // }
 }
@@ -687,6 +687,56 @@ h1 {
     }
 }
 
+// Extra large devices (large desktops, 1200px and up)
+@media (max-width: 1376px) {
+    .main {
+        &-image {
+            left: -10%;
+        }
+        &-content {
+            h1 {
+                font-size: 1.25rem;
+            }
+            &__logo {
+                width: 80%;
+                height: auto;
+            }
+            &__nav a {
+                font-size: .85rem;
+            }
+            & > * {
+                margin-bottom: 2rem;
+            }
+        }
+    }
+    .assortment {
+        &-card {
+            padding: 2rem;
+            h3 {
+                font-size: 1.25rem;
+            }
+            img {
+                width: 3rem;
+                height: auto;
+            }
+        }
+    }
+    .form {
+        &-wrapper {
+            z-index: 1;
+        }
+        &-card {
+            padding: 4rem;
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+    footer {
+        font-size: 0.7rem;
+    }
+}
 
 // Extra large devices (large desktops, 1200px and up)
 @media (max-width: 1200px) {
