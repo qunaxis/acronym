@@ -42,16 +42,17 @@ header {
 }
 
 .nav {
+    font-size: 1rem;
     &-logo {
-        height: 3rem;
+        height: 3em;
         width: auto;
-        margin-right: 2rem;
+        margin-right: 2em;
     }
     &-list {
         & a {
-            margin-right: 1rem;
+            margin-right: 1em;
             color: $black;
-            font-size: .875rem;
+            font-size: .875em;
             font-weight: 500;
             // border-bottom: 1px dashed $black;
             transition: all .4s ease;
